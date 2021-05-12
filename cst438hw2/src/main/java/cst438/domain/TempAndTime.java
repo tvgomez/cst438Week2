@@ -5,7 +5,7 @@ import cst438.weather.WeatherService;
 public class TempAndTime {
 	
 	private double temp;
-	private String condition;
+	private long time;
 	private int timezone;
 	
 	
@@ -13,9 +13,9 @@ public class TempAndTime {
 		
 	}
 	
-	public TempAndTime( double temp, String condition,int timezone) {
+	public TempAndTime( double temp, long time,int timezone) {
 		this.temp = temp;
-		this.condition = condition;
+		this.time = time;
 		this.timezone = timezone;
 		
 	}
@@ -28,12 +28,12 @@ public class TempAndTime {
 		this.temp = temp;
 	}
 
-	public String getCondition() {
-		return condition;
+	public long getTime() {
+		return time;
 	}
 	
-	public void setCondition(String condition) {
-		this.condition=condition;
+	public void setTime(int time) {
+		this.time=time;
 	}
 	
 
@@ -46,11 +46,10 @@ public class TempAndTime {
 	}
 	@Override
 	public String toString() {
-		return "TimeAndTemp [temp=" + temp + ", condition=" + condition + ", timezone=" + timezone + "]";
+		return "TimeAndTemp [temp=" + temp + ", condition=" + time + ", timezone=" + timezone + "]";
 	}
 
-	
-	
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -61,15 +60,18 @@ public class TempAndTime {
 		if (getClass() != obj.getClass())
 			return false;
 		TempAndTime other = (TempAndTime) obj;
-		if (condition == null) {
-			if (other.condition != null)
-				return false;
-		} else if (!condition.equals(other.condition))
-			return false;
 		if (Double.doubleToLongBits(temp) != Double.doubleToLongBits(other.temp))
+			return false;
+		if (time != other.time)
+			return false;
+		if (timezone != other.timezone)
 			return false;
 		return true;
 	}
+
+	
+	
+
 
 	
 

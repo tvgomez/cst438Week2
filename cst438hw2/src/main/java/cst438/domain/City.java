@@ -20,7 +20,7 @@ public class City {
 	// Transient marks extra field in an Entity class
 	//  that is not read/written to the database.
 	@Transient
-	CityWeather weather;
+	TempAndTime weather;
 	
 	@ManyToOne
 	@JoinColumn(name="countrycode", referencedColumnName="code")
@@ -68,11 +68,11 @@ public class City {
 		this.population = population;
 	}
 
-	public CityWeather getWeather() {
+	public TempAndTime getWeather() {
 		return weather;
 	}
 
-	public void setWeather(CityWeather weather) {
+	public void setWeather(TempAndTime weather) {
 		this.weather = weather;
 	}
 
@@ -127,11 +127,6 @@ public class City {
 				+ ", weather=" + weather + ", country=" + country + "]";
 	}
 	
-	
-
-}
-	
-
 	
 
 }

@@ -39,14 +39,14 @@ public abstract class CityService {
 		public CityInfo getCityInfo(String cityName) {
 			List<City> cities = cityRepository.findByName(cityName);
 			City city = cities.get(0);
-			CityWeather cityWeather = serviceWeather.getWeather(cityName);
-			double tempFtoC;
-			cityWeather.setTemp(tempFtoC);
+			TempAndTime cityWeather = serviceWeather.getTempAndTime(cityName);
+			cityWeather.setTemp(cityWeather.getTemp());
 			
 			return new CityInfo(city.getID(),
 						city.getName(), 
 						city.getPopulation(),
-						String.valueOf(city.getTempAndTime().getTemp()) + "F"
+						String.valueOf(city.getWeather().getTemp() + "F"),
+						String.valueOf(city.getWeather().getTimezone()),
 						city.getCountry().getCode(),
 						city.getCountry().getName(),
 						city.getDistrict());
